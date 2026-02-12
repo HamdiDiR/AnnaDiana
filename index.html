@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Question 🧪</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+.cover {
+    height: 100vh;
+    background:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+      url("cover.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+h1, h2, p {
+    margin: 15px 0;
+}
+
+button {
+    padding: 12px 28px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.yes { background: #64748b; color: white; }
+.no { background: #ec4899; color: white; }
+.ok { background: #22c55e; color: white; }
+.also { background: #38bdf8; color: black; }
+
+.hidden {
+    display: none;
+}
+
+/* Animation */
+.bubble {
+    position: absolute;
+    bottom: -40px;
+    font-size: 24px;
+    animation: floatUp 6s ease-in infinite;
+}
+
+@keyframes floatUp {
+    0% { opacity: 0; transform: translateY(0); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-120vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cover">
+    <h1>Do you have a boyfriend? 💭</h1>
+
+    <div id="question">
+        <button class="yes" onclick="yesClicked()">Yes</button>
+        <button class="no" onclick="noClicked()">No</button>
+    </div>
+
+    <div id="secret" class="hidden">
+        <p>✨ I would like to say a secret if you're interested.</p>
+        <button class="ok" onclick="showLike()">Ok</button>
+    </div>
+
+    <div id="like" class="hidden">
+        <p>💖 I kinda like you and I would like to know you better.</p>
+        <button class="also" onclick="showChemistry()">Also me</button>
+    </div>
+
+    <div id="chemistry" class="hidden">
+        <h2>🧪 Chemistry Reaction Detected!</h2>
+        <p>Some reactions are worth exploring 😉</p>
+    </div>
+</div>
+
+<script>
+function yesClicked() {
+    // Do nothing on purpose
+}
+
+function noClicked() {
+    document.getElementById("secret").classList.remove("hidden");
+}
+
+function showLike() {
+    document.getElementById("like").classList.remove("hidden");
+}
+
+function showChemistry() {
+    document.getElementById("chemistry").classList.remove("hidden");
+    createAnimation();
+}
+
+function createAnimation() {
+    const symbols = ["🧪", "💖", "⚛️", "✨"];
+    for (let i = 0; i < 20; i++) {
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        bubble.style.left = Math.random() * 100 + "vw";
+        bubble.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(bubble);
+
+        setTimeout(() => bubble.remove(), 7000);
+    }
+}
+</script>
+
+</body>
+</html>
